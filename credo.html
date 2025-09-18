@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Credo - Assembleia de Deus Guacuri</title>
+    <link rel="shortcut icon" href="projetoIgreja/Assets/favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #111;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 80px;
+        }
+
+        .menu ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #d4af37;
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: 12px;
+        }
+
+        .redes-sociais img {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .redes-sociais img:hover {
+            transform: scale(1.2);
+        }
+
+        .conteudo {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #d4af37;
+            text-align: center;
+        }
+
+        .lista-credo {
+            counter-reset: credo-counter;
+            margin-bottom: 50px;
+        }
+
+        .item-credo {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-left: 4px solid #d4af37;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item-credo::before {
+            counter-increment: credo-counter;
+            content: counter(credo-counter);
+            position: absolute;
+            top: 20px;
+            left: -15px;
+            background-color: #d4af37;
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .item-credo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .item-credo:hover::before {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+        }
+
+        .titulo-credo {
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            padding-left: 40px;
+            transition: color 0.3s ease;
+        }
+
+        .texto-credo {
+            color: #ddd;
+            line-height: 1.6;
+            padding-left: 40px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding-top 0.3s ease;
+        }
+
+        .item-credo.ativo .texto-credo {
+            max-height: 500px;
+            padding-top: 15px;
+        }
+
+        .item-credo.ativo .titulo-credo {
+            color: #fff;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 30px 0 15px;
+            margin-top: 30px;
+        }
+
+        .footer-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social img {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .footer-social img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-copy {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 992px) {
+            .menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .item-credo {
+                padding: 20px 15px;
+            }
+            
+            .titulo-credo {
+                font-size: 1.1rem;
+                padding-left: 35px;
+            }
+            
+            .texto-credo {
+                padding-left: 35px;
+            }
+            
+            .item-credo::before {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                left: -12px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-links ul {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .menu ul {
+                gap: 10px;
+            }
+            
+            .menu a {
+                font-size: 0.8rem;
+            }
+            
+            .titulo-credo {
+                font-size: 1rem;
+                padding-left: 30px;
+            }
+            
+            .texto-credo {
+                padding-left: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .item-credo::before {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+                left: -10px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .item-credo {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .item-credo:nth-child(1) { animation-delay: 0.1s; }
+        .item-credo:nth-child(2) { animation-delay: 0.2s; }
+        .item-credo:nth-child(3) { animation-delay: 0.3s; }
+        .item-credo:nth-child(4) { animation-delay: 0.4s; }
+        .item-credo:nth-child(5) { animation-delay: 0.5s; }
+        .item-credo:nth-child(6) { animation-delay: 0.6s; }
+        .item-credo:nth-child(7) { animation-delay: 0.7s; }
+        .item-credo:nth-child(8) { animation-delay: 0.8s; }
+        .item-credo:nth-child(9) { animation-delay: 0.9s; }
+        .item-credo:nth-child(10) { animation-delay: 1.0s; }
+    </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="projetoIgreja/Assets/Imagens/ImagensGerais/ASSEMBLEIA DE DEUS (1).png" alt="logo da igreja" width="250">
+    </a>
+  </div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">SOBRE</a></li>
+      <li><a href="ministerio.html">O MINISTÉRIO</a></li>
+      <li><a href="historia.html">NOSSA HISTÓRIA</a></li>
+      <li><a href="credo.html" style="color: #d4af37;">NOSSO CREDO</a></li>
+      <li><a href="onde-estamos.html">ONDE ESTAMOS</a></li>
+      <li><a href="contato.html">CONTATO</a></li>
+    </ul>
+  </nav>
+
+  <div class="redes-sociais">
+    <a href="https://wa.me/5527996552124" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/whatsapp.png" alt="whatsapp">
+    </a>
+    <a href="https://www.instagram.com/adguacuri_st/" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/instagram.png" alt="instagram">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100009016901492&locale=pt_BR" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/facebook.png" alt="facebook">
+    </a>
+    <a href="https://www.youtube.com/@adguacurioficial9533" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/youtube.png" alt="youtube">
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="conteudo">
+    <h1>Nosso Credo</h1>
+    
+    <div class="lista-credo">
+
+      <div class="item-credo">
+        <h3 class="titulo-credo">Um só Deus, três pessoas</h3>
+        <p class="texto-credo">Cremos no Pai, no Filho e no Espírito Santo, eternamente unidos em amor.</p>
+      </div>
+ 
+      <div class="item-credo">
+        <h3 class="titulo-credo">A Bíblia é nossa base</h3>
+        <p class="texto-credo">Palavra inspirada por Deus, regra de fé e guia para a vida cristã.</p>
+      </div>
+      
+      <div class="item-credo">
+        <h3 class="titulo-credo">Jesus é o centro</h3>
+        <p class="texto-credo">Nascido de uma virgem, morreu por nós, ressuscitou e hoje reina nos céus.</p>
+      </div>
+      
+      <div class="item-credo">
+        <h3 class="titulo-credo">Todos precisamos de salvação</h3>
+        <p class="texto-credo">O pecado nos afastou de Deus, mas Jesus é o único caminho de restauração.</p>
+      </div>
+      
+ 
+      <div class="item-credo">
+        <h3 class="titulo-credo">Novo nascimento</h3>
+        <p class="texto-credo">Só pela fé em Cristo e pela ação do Espírito Santo podemos viver o Reino de Deus.</p>
+      </div>
+      
+
+      <div class="item-credo">
+        <h3 class="titulo-credo">Salvação pela graça</h3>
+        <p class="texto-credo">Perdão, justificação e vida eterna são dádivas recebidas pela fé em Jesus.</p>
+      </div>
+      
+
+      <div class="item-credo">
+        <h3 class="titulo-credo">Batismo nas águas</h3>
+        <p class="texto-credo">Um ato de obediência e testemunho público da nossa fé em Cristo.</p>
+      </div>
+
+      <div class="item-credo">
+        <h3 class="titulo-credo">Vida santa</h3>
+        <p class="texto-credo">Chamados a viver em santidade, capacitados pelo Espírito Santo como testemunhas de Jesus.</p>
+      </div>
+      
+
+      <div class="item-credo">
+        <h3 class="titulo-credo">Batismo no Espírito Santo</h3>
+        <p class="texto-credo">Dom prometido por Deus, com poder e evidências físicas e espirituais.</p>
+      </div>
+
+      <div class="item-credo">
+        <h3 class="titulo-credo">Esperança eterna</h3>
+        <p class="texto-credo">Cremos na volta de Cristo, no juízo final e na vida eterna: alegria para os fiéis e condenação para os que rejeitam a fé.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-wrapper">
+    <div class="footer-container">
+
+     <div class="footer-links">
+        <ul>
+          <li><a href="index.html">SOBRE</a></li>
+          <li><a href="ministerio.html">O MINISTÉRIO</a></li>
+          <li><a href="historia.html">NOSSA HISTÓRIA</a></li>
+          <li><a href="credo.html">NOSSO CREDO</a></li>
+          <li><a href="onde-estamos.html">ONDE ESTAMOS</a></li>
+          <li><a href="contato.html">CONTATO</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/adguacuri_st/" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100009016901492" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.youtube.com/@adguacurioficial9533" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/youtube.png" alt="YouTube">
+        </a>
+        <a href="https://wa.me/5527996552124" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/whatsapp.png" alt="WhatsApp">
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-copy">
+      <p>&copy; 2025 Assembleia de Deus Ministério Guacuri. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  
+    document.addEventListener('DOMContentLoaded', function() {
+        const itensCredo = document.querySelectorAll('.item-credo');
+        
+      
+        if (itensCredo.length > 0) {
+            itensCredo[0].classList.add('ativo');
+        }
+        
+        itensCredo.forEach(item => {
+            item.addEventListener('click', function() {
+                // Fechar todos os itens
+                itensCredo.forEach(i => {
+                    if (i !== item) {
+                        i.classList.remove('ativo');
+                    }
+                });
+                
+            
+                item.classList.toggle('ativo');
+            });
+        });
+        
+        
+        function animarItens() {
+            itensCredo.forEach(item => {
+                const posicao = item.getBoundingClientRect().top;
+                const windowAltura = window.innerHeight;
+                
+                if (posicao < windowAltura * 0.9) {
+                    item.style.animationPlayState = 'running';
+                }
+            });
+        }
+        
+        
+        animarItens();
+        window.addEventListener('scroll', animarItens);
+    });
+</script>
+
+</body>
+</html>

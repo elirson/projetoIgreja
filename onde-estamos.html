@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onde Estamos - Assembleia de Deus Guacuri</title>
+    <link rel="shortcut icon" href="projetoIgreja/Assets/favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #111;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 80px;
+        }
+
+        .menu ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #d4af37;
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: 12px;
+        }
+
+        .redes-sociais img {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .redes-sociais img:hover {
+            transform: scale(1.2);
+        }
+
+        .conteudo {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #d4af37;
+            text-align: center;
+        }
+
+        .onde-estamos {
+            padding: 40px 0;
+        }
+
+        .onde-conteudo {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .onde-texto {
+            flex: 1;
+        }
+
+        .onde-texto p {
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .onde-texto b {
+            color: #d4af37;
+        }
+
+        .mapa-container {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+            height: 400px;
+        }
+
+        .mapa-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .congregacoes {
+            padding: 40px 0;
+            background-color: #111;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 15px 15px 5px;
+            color: #d4af37;
+            font-size: 1.2rem;
+        }
+
+        .card .btn {
+            display: block;
+            margin: 15px;
+            padding: 10px 15px;
+            background-color: #d4af37;
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card .btn:hover {
+            background-color: #c19d2e;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 30px 0 15px;
+            margin-top: 30px;
+        }
+
+        .footer-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social img {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .footer-social img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-copy {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 992px) {
+            .onde-conteudo {
+                flex-direction: column;
+            }
+            
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-links ul {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .menu ul {
+                gap: 10px;
+            }
+            
+            .menu a {
+                font-size: 0.8rem;
+            }
+            
+            .mapa-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="projetoIgreja/Assets/Imagens/ImagensGerais/ASSEMBLEIA DE DEUS (1).png" alt="logo da igreja" width="250">
+    </a>
+  </div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">SOBRE</a></li>
+      <li><a href="ministerio.html">O MINISTÉRIO</a></li>
+      <li><a href="historia.html">NOSSA HISTÓRIA</a></li>
+      <li><a href="credo.html">NOSSO CREDO</a></li>
+      <li><a href="onde-estamos.html" style="color: #d4af37;">ONDE ESTAMOS</a></li>
+      <li><a href="contato.html">CONTATO</a></li>
+    </ul>
+  </nav>
+
+  <div class="redes-sociais">
+    <a href="https://wa.me/5527996552124" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/whatsapp.png" alt="whatsapp">
+    </a>
+    <a href="https://www.instagram.com/adguacuri_st/" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/instagram.png" alt="instagram">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100009016901492&locale=pt_BR" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/facebook.png" alt="facebook">
+    </a>
+    <a href="https://www.youtube.com/@adguacurioficial9533" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/youtube.png" alt="youtube">
+    </a>
+  </div>
+</header>
+
+<main> 
+    <div class="onde-estamos">
+      <div class="conteudo">
+        <div class="onde-conteudo">
+          <div class="onde-texto">
+            <h2>Onde Estamos</h2>
+            <p>
+              Estamos localizados em Santa Teresa, na região montanhosa do Espírito Santo, conhecida carinhosamente como a Doce Terra dos Colibris. Nossa sede fica na <b>Rua Vicente da Costa, nº 212, no bairro Vila Nova</b>. Venha adorar a Deus conosco, será uma alegria recebê-lo — nossa igreja está de portas abertas para acolher você e sua família!
+            </p>
+          </div>
+          <div class="mapa-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3679.4749469443294!2d-40.605166!3d-19.941215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1726680000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="congregacoes">
+      <div class="conteudo">
+        <h2>Nossas Congregações</h2>
+
+        <div class="cards-container">
+          <div class="card">
+            <img src="projetoIgreja/Assets/Imagens/ImagensGerais/santamaria.png" alt="Santa Maria de Jetibá">
+            <h3>Santa Maria de Jetibá</h3>
+            <a href="https://www.instagram.com/adguacuri_smj/" class="btn" target="_blank">Saiba Mais</a>
+          </div>
+
+          <div class="card">
+            <img src="projetoIgreja/Assets/Imagens/ImagensGerais/adgcaldeirao.jpg" alt="Alto Caldeirão">
+            <h3>Alto Caldeirão</h3>
+            <a href="https://www.instagram.com/ad.guacuri_alto_caldeirao/" class="btn" target="_blank">Saiba Mais</a>
+          </div>
+
+          <div class="card">
+            <img src="projetoIgreja/Assets/Imagens/ImagensGerais/adgrecreio.jpg" alt="Comunidade Recreio">
+            <h3>Comunidade Recreio</h3>
+            <a href="https://www.instagram.com/adguacuri_recreio/" class="btn" target="_blank">Saiba Mais</a>
+          </div>
+
+          <div class="card">
+            <img src="projetoIgreja/Assets/Imagens/ImagensGerais/adgitarana.jpg" alt="Itarana">
+            <h3>Itarana</h3>
+            <a href="https://www.instagram.com/ad_guacuri_itarana/" class="btn" target="_blank">Saiba Mais</a>
+          </div>
+
+          <div class="card">
+            <img src="projetoIgreja/Assets/Imagens/ImagensGerais/adgbetel.jpg" alt="Betel Aparecidinha">
+            <h3>Betel (Aparecidinha)</h3>
+            <a href="https://www.instagram.com/congre.adguacuribetel/" class="btn" target="_blank">Saiba Mais</a>
+          </div>
+
+          <div class="card">
+            <img src="projetoIgreja/Assets/Imagens/ImagensGerais/adgmilanezi.jpg" alt="Córrego Milanezi">
+            <h3>Córrego Milanezi</h3>
+            <a href="https://www.instagram.com/adguacuri_milanezi/" class="btn" target="_blank">Saiba Mais</a>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
+
+<footer>
+  <div class="footer-wrapper">
+    <div class="footer-container">
+
+     <div class="footer-links">
+        <ul>
+          <li><a href="index.html">SOBRE</a></li>
+          <li><a href="ministerio.html">O MINISTÉRIO</a></li>
+          <li><a href="historia.html">NOSSA HISTÓRIA</a></li>
+          <li><a href="credo.html">NOSSO CREDO</a></li>
+          <li><a href="onde-estamos.html">ONDE ESTAMOS</a></li>
+          <li><a href="contato.html">CONTATO</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/adguacuri_st/" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100009016901492" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.youtube.com/@adguacurioficial9533" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/youtube.png" alt="YouTube">
+        </a>
+        <a href="https://wa.me/5527996552124" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/whatsapp.png" alt="WhatsApp">
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-copy">
+      <p>&copy; 2025 Assembleia de Deus Ministério Guacuri. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

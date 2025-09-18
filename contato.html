@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Assembleia de Deus Guacuri</title>
+    <link rel="shortcut icon" href="projetoIgreja/Assets/favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #111;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 80px;
+        }
+
+        .menu ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #d4af37;
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: 12px;
+        }
+
+        .redes-sociais img {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .redes-sociais img:hover {
+            transform: scale(1.2);
+        }
+
+        .conteudo {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        h1, h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #d4af37;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+
+        .secao-contato {
+            margin-bottom: 50px;
+        }
+
+        .contato-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-contato {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .info-contato:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-contato h4 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-contato h4 i {
+            font-size: 1.4rem;
+        }
+
+        .info-contato p, .info-contato a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .info-contato a:hover {
+            color: #d4af37;
+        }
+
+        .doacao-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .info-doacao {
+            flex: 1;
+            min-width: 300px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .qrcode-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .qrcode-placeholder {
+            width: 200px;
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px dashed #d4af37;
+        }
+
+        .qrcode-placeholder span {
+            color: #888;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .chave-pix {
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 30px 0 15px;
+            margin-top: 30px;
+        }
+
+        .footer-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social img {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .footer-social img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-copy {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 992px) {
+            .menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .doacao-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1, h2 {
+                font-size: 1.8rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            .contato-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-links ul {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1, h2 {
+                font-size: 1.5rem;
+            }
+            
+            .menu ul {
+                gap: 10px;
+            }
+            
+            .menu a {
+                font-size: 0.8rem;
+            }
+            
+            .info-contato, .info-doacao, .qrcode-container {
+                padding: 20px;
+            }
+            
+            .qrcode-placeholder {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: #d4af37;
+            border-radius: 50%;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .icon::before {
+            content: "";
+            position: absolute;
+            background-color: #000;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .icon-phone::before {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .icon-email::before {
+            width: 12px;
+            height: 8px;
+            border: 2px solid #000;
+            border-top: none;
+        }
+
+        .icon-location::before {
+            width: 8px;
+            height: 10px;
+            border: 2px solid #000;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .icon-clock::before {
+            width: 12px;
+            height: 12px;
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+
+        .icon-clock::after {
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 2px;
+            background-color: #000;
+            top: 50%;
+            left: 50%;
+            transform-origin: left center;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="projetoIgreja/Assets/Imagens/ImagensGerais/ASSEMBLEIA DE DEUS (1).png" alt="logo da igreja" width="250">
+    </a>
+  </div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">SOBRE</a></li>
+      <li><a href="ministerio.html">O MINISTÉRIO</a></li>
+      <li><a href="historia.html">NOSSA HISTÓRIA</a></li>
+      <li><a href="credo.html">NOSSO CREDO</a></li>
+      <li><a href="onde-estamos.html">ONDE ESTAMOS</a></li>
+      <li><a href="contato.html" style="color: #d4af37;">CONTATO</a></li>
+    </ul>
+  </nav>
+
+  <div class="redes-sociais">
+    <a href="https://wa.me/5527996552124" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/whatsapp.png" alt="whatsapp">
+    </a>
+    <a href="https://www.instagram.com/adguacuri_st/" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/instagram.png" alt="instagram">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100009016901492&locale=pt_BR" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/facebook.png" alt="facebook">
+    </a>
+    <a href="https://www.youtube.com/@adguacurioficial9533" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/youtube.png" alt="youtube">
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="conteudo">
+    <h1>Entre em Contato</h1>
+    
+    <section class="secao-contato">
+      <div class="contato-grid">
+        <div class="info-contato">
+          <h4><span class="icon icon-phone"></span> Contatos Gerais</h4>
+          <p><strong>Telefone:</strong> (27) 99999-9999</p>
+          <p><strong>Telefone Secretaria:</strong> (27) 9999-9999</p>
+          <p><strong>E-mail:</strong> contato@adguacuri.com.br</p>
+        </div>
+        
+        <div class="info-contato">
+          <h4><span class="icon icon-location"></span> Endereço</h4>
+          <p>Rua Vicente da Costa, nº 212</p>
+          <p>Vila Nova, Santa Teresa - ES</p>
+          <p>CEP: 29650-000</p>
+        </div>
+        
+        <div class="info-contato">
+          <h4><span class="icon icon-clock"></span> Horários de Culto</h4>
+          <p><strong>Domingo:</strong> 9h (Escola Dominical) e 19h</p>
+          <p><strong>Segunda:</strong> 19h (Campanha da Família)</p>
+          <p><strong>Terça-feira:</strong> 19h30 (Oração/Círculo de Oração)</p>
+          <p><strong>Sexta-Feira:</strong> 19h30 (Estudo Bíblico)</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="secao-contato">
+      <h2>Doações e Contribuições</h2>
+      
+      <div class="doacao-container">
+        <div class="info-doacao">
+          <h3>Como Contribuir</h3>
+          <p>Sua contribuição é fundamental para a manutenção e expansão da obra de Deus. Você pode contribuir das seguintes formas:</p>
+          
+          <h4>PIX</h4>
+          <p>Utilize nossa chave PIX para fazer sua doação de forma rápida e segura:</p>
+          <div class="chave-pix">
+            <strong>Chave PIX (CNPJ):</strong> 12.345.678/0001-90
+          </div>
+          
+          <h4>Transferência Bancária</h4>
+          <p><strong>Banco:</strong> Banco do Brasil</p>
+          <p><strong>Agência:</strong> 1234-5</p>
+          <p><strong>Conta Corrente:</strong> 12345-6</p>
+          <p><strong>Favorecido:</strong> Assembleia de Deus Ministério Guacuri</p>
+          <p><strong>CNPJ:</strong> 12.345.678/0001-90</p>
+          
+          <h4>Ofertas Presenciais</h4>
+          <p>Durante os cultos e reuniões, você também pode depositar suas ofertas e dízimos nas urnas disponíveis.</p>
+        </div>
+        
+        <div class="qrcode-container">
+          <h3>PIX QR Code</h3>
+          <div class="qrcode-placeholder">
+            <span>QR CODE<br>(200x200px)</span>
+          </div>
+          <p>Escaneie este QR Code com seu aplicativo bancário para fazer uma doação rápida via PIX.</p>
+          <p><strong>Valor sugerido:</strong> Qualquer valor é bem-vindo!</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-wrapper">
+    <div class="footer-container">
+
+     <div class="footer-links">
+        <ul>
+          <li><a href="index.html">SOBRE</a></li>
+          <li><a href="ministerio.html">O MINISTÉRIO</a></li>
+          <li><a href="historia.html">NOSSA HISTÓRIA</a></li>
+          <li><a href="credo.html">NOSSO CREDO</a></li>
+          <li><a href="onde-estamos.html">ONDE ESTAMOS</a></li>
+          <li><a href="contato.html">CONTATO</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/adguacuri_st/" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100009016901492" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.youtube.com/@adguacurioficial9533" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/youtube.png" alt="YouTube">
+        </a>
+        <a href="https://wa.me/5527996552124" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/whatsapp.png" alt="WhatsApp">
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-copy">
+      <p>&copy; 2025 Assembleia de Deus Ministério Guacuri. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

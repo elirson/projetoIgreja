@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assembleia de Deus Guacuri</title>
+    <link rel="shortcut icon" href="projetoIgreja/Assets/favicon.ico" type="image/x-icon">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #111;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 80px;
+        }
+
+        .menu ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #d4af37;
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: 12px;
+        }
+
+        .redes-sociais img {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .redes-sociais img:hover {
+            transform: scale(1.2);
+        }
+
+        .conteudo {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #d4af37;
+            text-align: center;
+        }
+
+        .quem-somos {
+            padding: 20px 0 40px; 
+        }
+
+        .quem-somos .conteudo {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding-top: 10px; 
+        }
+
+        .quem-somos .texto {
+            flex: 1;
+        }
+
+        .quem-somos .imagem {
+            flex: 1;
+        }
+
+        .quem-somos img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .topicos {
+            margin-top: 15px;
+        }
+
+        .topicos li {
+            margin-bottom: 12px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .topicos li:before {
+            content: "•";
+            color: #d4af37;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* Seção - NOssa Missão */
+        .nossa-missao {
+            padding: 40px 0;
+            background-color: #111;
+        }
+
+        .nossa-missao .conteudo {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nossa-missao .texto {
+            flex: 1;
+        }
+
+        .nossa-missao .imagem {
+            flex: 1;
+        }
+
+        .nossa-missao img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .destaque-jesus {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 1.2em;
+            font-style: italic;
+            margin: 15px 0;
+            text-align: center;
+            border-left: 3px solid #d4af37;
+            padding-left: 15px;
+        }
+
+        .amamos-obra {
+            padding: 40px 0;
+        }
+
+        .carrossel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carrossel {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 15px; 
+        }
+
+        .slide {
+            flex: 0 0 calc(33.333% - 10px); 
+            min-width: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 200px; 
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .slide img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-carrossel {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 15px 10px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+            transition: background-color 0.3s;
+            border-radius: 4px;
+        }
+
+        .btn-carrossel:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .esquerda {
+            left: 10px;
+        }
+
+        .direita {
+            right: 10px;
+        }
+
+        .mais-25-anos {
+            padding: 40px 0;
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .caixa-especial {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #d4af37;
+            transition: transform 0.3s ease;
+        }
+
+        .caixa-especial:hover {
+            animation: balanco 0.5s ease;
+        }
+
+        @keyframes balanco {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            50% { transform: rotate(-3deg); }
+            75% { transform: rotate(2deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .caixa-especial p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .faixa-comunicacao {
+            background-color: #d4af37;
+            color: #000;
+            padding: 15px 0;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .faixa-conteudo {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+        }
+
+        .faixa-conteudo span {
+            margin-right: 40px;
+            font-weight: 500;
+        }
+
+        .ponto {
+            margin-left: 20px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 30px 0 15px;
+            margin-top: 30px;
+        }
+
+        .footer-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social img {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s;
+        }
+
+        .footer-social img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-copy {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Interação do site */
+        @media (max-width: 992px) {
+            .quem-somos .conteudo,
+            .nossa-missao .conteudo {
+                flex-direction: column;
+            }
+            
+            .menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .slide {
+                flex: 0 0 calc(50% - 10px); 
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-links ul {
+                justify-content: center;
+            }
+            
+            .slide {
+                flex: 0 0 calc(100% - 10px); 
+            }
+            
+            .slide img {
+                height: 180px;
+            }
+            
+            .carrossel {
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .faixa-conteudo span {
+                font-size: 0.9rem;
+            }
+            
+            .slide img {
+                height: 150px;
+            }
+            
+            .caixa-especial {
+                padding: 20px;
+            }
+            
+            .menu ul {
+                gap: 10px;
+            }
+            
+            .menu a {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="projetoIgreja/Assets/Imagens/ImagensGerais/ASSEMBLEIA DE DEUS (1).png" alt="logo da igreja" width="250">
+    </a>
+  </div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">SOBRE</a></li>
+      <li><a href="ministerio.html">O MINISTÉRIO</a></li>
+      <li><a href="historia.html">NOSSA HISTÓRIA</a></li>
+      <li><a href= "credo.html">NOSSO CREDO</a></li>
+      <li><a href="onde-estamos.html">ONDE ESTAMOS</a></li>
+      <LI><a href="contato.html">FAÇA PARTE</a></LI>
+    </ul>
+  </nav>
+
+  <div class="redes-sociais">
+    <a href="https://wa.me/5527996552124" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/whatsapp.png" alt="whatsapp">
+    </a>
+    <a href="https://www.instagram.com/adguacuri_st/" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/instagram.png" alt="instagram">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100009016901492&locale=pt_BR" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/facebook.png" alt="facebook">
+    </a>
+    <a href="https://www.youtube.com/@adguacurioficial9533" target="_blank" rel="noopener noreferrer">
+      <img src="projetoIgreja/Assets/youtube.png" alt="youtube">
+    </a>
+  </div>
+</header>
+
+<main>
+<div class="quem-somos">
+  <div class="conteudo">
+    <div class="texto">
+      <h2>Somos Uma igreja que vive e anuncia a Palavra de Deus </h2>
+      <ul class="topicos">
+        <li>Fidelidade à Verdade: preservamos a sã doutrina, cultivamos bons costumes e buscamos o mover dos dons espirituais.</li>
+        <li>Cuidado com Pessoas: nossa missão é acolher, amar e caminhar junto em todas as fases da vida cristã.</li>
+        <li>Jesus é Tudo o que Você Precisa: servimos, pregamos e vivemos o evangelho com fé, integridade e dedicação.</li>
+      </ul>
+    </div>
+    <div class="imagem">
+      <img src="projetoIgreja/Assets/Imagens/ImagensGerais/fachada.jpeg" alt="Fachada da igreja">
+    </div>
+  </div>
+</div>
+
+<div class="nossa-missao">
+  <div class="conteudo">
+    <div class="texto">
+      <h2>Uma igreja em missão, vivendo para a glória de Cristo</h2>
+      <p>Nossa missão é seguir a Jesus com fidelidade, amor e obediência, sendo um povo separado e cheio do Espírito Santo. Reunidos como Igreja, caminhamos em unidade e anunciamos ao mundo as Boas Novas da salvação. Guardamos a mensagem de fé que recebemos — Jesus salva, cura, batiza com o Espírito Santo e em breve voltará.</p>
+      <p class="destaque-jesus">Jesus tem tudo que você precisa</p>
+    </div>
+    <div class="imagem">
+      <img src="projetoIgreja/Assets/Imagens/ImagensGaleria/dois.jpg" alt="foto-missao">
+    </div>
+  </div>
+</div>
+
+<div class="amamos-obra">
+  <div class="conteudo">
+    <h2>Amamos a Obra de Deus</h2>
+    <div class="carrossel-container">
+      <button class="btn-carrossel esquerda">&#10094;</button>
+      <div class="carrossel">
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/um.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/dois.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/tres.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/quatro.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/cinco.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/seis.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/sete.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/oito.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/nove.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/dez.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/onze.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/doze.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/treze.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/catorze.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/quinze.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/dezesseis.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/dezessete.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/dezoito.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/dezenove.jpg" alt="Foto da obra de Deus"></div>
+        <div class="slide"><img src="projetoIgreja/Assets/Imagens/ImagensGaleria/vinte.webp" alt="Foto da obra de Deus"></div>
+      </div>
+      <button class="btn-carrossel direita">&#10095;</button>
+    </div>
+  </div>
+</div>
+
+<div class="mais-25-anos">
+  <div class="conteudo">
+    <div class="caixa-especial">
+      <p>Desde 1998 servindo a Deus e pregando que Jesus salva, cura, batiza com Espírito Santo e em breve voltará.</p>
+    </div>
+  </div>
+</div>
+
+<div class="faixa-comunicacao">
+  <div class="faixa-conteudo">
+    <span>Venha nos visitar <span class="ponto">&#9679;</span></span>
+    <span>Jesus tem tudo o que você precisa <span class="ponto">&#9679;</span></span>
+    <span>Quer vencer o mal? Venha para a Escola Dominical <span class="ponto">&#9679;</span></span>
+    <span>Jesus te ama!<span class="ponto">&#9679;</span></span>
+    <span>Participe dos nossos cultos <span class="ponto">&#9679;</span></span>
+    <span>Faça parte da nossa Igreja <span class="ponto">&#9679;</span></span>
+    <span>Compartilhe o amor de Cristo <span class="ponto">&#9679;</span></span>
+    <span>Transforme sua vida com Jesus <span class="ponto">&#9679;</span></span>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-wrapper">
+    <div class="footer-container">
+
+     <div class="footer-links">
+        <ul>
+          <li><a href="index.html">SOBRE</a></li>
+          <li><a href="ministerio.html">O MINISTÉRIO</a></li>
+          <li><a href="historia.html">NOSSA HISTÓRIA</a></li>
+          <li><a href="credo.html">NOSSO CREDO</a></li>
+          <li><a href="onde-estamos.html">ONDE ESTAMOS</a></li>
+          <li><a href="contato.html">FAÇA PARTE</a></li>
+        </ul>   
+      </div>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/adguacuri_st/" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100009016901492" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.youtube.com/@adguacurioficial9533" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/youtube.png" alt="YouTube">
+        </a>
+        <a href="https://wa.me/5527996552124" target="_blank" rel="noopener noreferrer">
+          <img src="projetoIgreja/Assets/whatsapp.png" alt="WhatsApp">
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-copy">
+      <p>&copy; 2025 Assembleia de Deus Ministério Guacuri. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carrossel = document.querySelector('.carrossel');
+        const slides = document.querySelectorAll('.slide');
+        const btnEsquerda = document.querySelector('.esquerda');
+        const btnDireita = document.querySelector('.direita');
+        
+        let currentIndex = 0;
+        const slidesToShow = window.innerWidth < 768 ? (window.innerWidth < 576 ? 1 : 2) : 3;
+        const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
+        
+        function updateCarrossel() {
+            const transformValue = -currentIndex * slideWidth;
+            carrossel.style.transform = `translateX(${transformValue}px)`;
+        }
+        
+        btnDireita.addEventListener('click', function() {
+            if (currentIndex < slides.length - slidesToShow) {
+                currentIndex++;
+                updateCarrossel();
+            }
+        });
+        
+        btnEsquerda.addEventListener('click', function() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarrossel();
+            }
+        });
+        
+        window.addEventListener('resize', function() {
+            const newSlidesToShow = window.innerWidth < 768 ? (window.innerWidth < 576 ? 1 : 2) : 3;
+            if (newSlidesToShow !== slidesToShow) {
+                currentIndex = 0;
+                updateCarrossel();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
